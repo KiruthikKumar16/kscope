@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  kscope:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - FIREBASE_DATABASE_URL=${FIREBASE_DATABASE_URL}
+      - FIREBASE_PROJECT_ID=${FIREBASE_PROJECT_ID}
+    volumes:
+      - ./src/main/resources/firebase-config.json:/app/src/main/resources/firebase-config.json
+    restart: unless-stopped 
